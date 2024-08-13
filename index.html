@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gredient App</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="logic.js"></script> -->
+</head>
+
+<body>
+    <div class="content">
+        <div class="btndiv">
+            <button id="btn1">#b21d15</button>
+            <button id="btn2">#a0e42b</button>
+        </div class="di">
+        <div>
+            <h3>Select And Get Your Choice Of Colors!</h3>
+            <div id="text">
+                background-image: linear-gradient(43deg, #1835c1 , #81ff70 );
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    let btn1 = document.getElementById('btn1');
+    let btn2 = document.getElementById('btn2');
+    let colorCode1 = '#b21d15';
+    let colorCode2 = '#a0e42b';
+    let text = document.getElementById("text");
+    const randomGradient = () => {
+        let values = "0123456789ABCDEF"
+        let gradientVal = "#";
+        for (let i = 0; i < 6; i++) {
+            gradientVal += values[Math.floor(Math.random() * 16)];
+        } return gradientVal;
+    }
+    const handleBtn1 = () => {
+        colorCode1 = randomGradient();
+        // console.log(colorCode1);
+        btn1.innerText = `${colorCode1}`
+        document.body.style.backgroundImage = ` linear-gradient(90deg,${colorCode1} ,${colorCode2} )`;
+        text.innerText = `background-image: linear-gradient(90deg, ${colorCode1} , ${colorCode2} );`;
+    }
+    const handleBtn2 = () => {
+        colorCode2 = randomGradient();
+        // console.log(colorCode1);
+        btn2.innerText = `${colorCode2}`
+        document.body.style.backgroundImage = ` linear-gradient(90deg,${colorCode1} ,${colorCode2} )`;
+        text.innerText = `background-image: linear-gradient(90deg, ${colorCode1} ${colorCode2} );`;
+
+    }
+    btn1.addEventListener("click", handleBtn1);
+    btn2.addEventListener("click", handleBtn2);
+
+    text.addEventListener('click', () => {
+
+        // navigator.clipboard.write(a);
+        navigator.clipboard.writetext(text.innerHTML)
+        // alert("Text copied!");
+
+    });
+</script>
+
+</html>
